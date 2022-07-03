@@ -18,6 +18,12 @@ Everyone is welcome to submit RFCs and participate in existing ones. To submit a
 
 ## Active RFCs
 
-| Number                                | Name             | status |
-| ------------------------------------- | ---------------- | ------ |
-| [0001](text/0001-pallas-addresses.md) | Pallas Addresses | Done   |
+| Number                                | Name                                   | status      |
+| ------------------------------------- | -------------------------------------- | ----------- |
+| [0001](text/0001-pallas-addresses.md) | Pallas Addresses                       | [Done](#1)  |
+| 0002                                  | Dolos: Data Node                       | [Draft](#2) |
+| ????                                  | WebAssembly as Oura sink               | Planned     |
+| ????                                  | Kelley: Cardano Kubernetes Operators   | Planned     |
+| ????                                  | Pallas Traverse                        | Planned     |
+| ????                                  | Standalone Ouroboros Client            | Planned     |
+| ????                                  | Deprecate "Oura as a library" approach | Planned     |
