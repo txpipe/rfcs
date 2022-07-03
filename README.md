@@ -15,3 +15,9 @@ Everyone is welcome to submit RFCs and participate in existing ones. To submit a
 5. Discussion takes place, and the text is revised in response.
 6. The PR is merged or closed when all of the members reach consensus.
 7. Any contributor can start working on the implementation of the proposal (RFC authors aren't necesarly responsible for the implementation).
+
+## Active RFCs
+
+| Number                                | Name             | status |
+| ------------------------------------- | ---------------- | ------ |
+| [0001](text/0001-pallas-addresses.md) | Pallas Addresses | Done   |
