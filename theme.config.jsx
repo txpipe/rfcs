@@ -6,6 +6,7 @@ export default {
     chat: {
         link: "https://discord.gg/Vc3x8N9nz2",
     },
+    darkMode: false,
     docsRepositoryBase: "https://github.com/txpipe/rfcs/blob/main",
     useNextSeoProps() {
         return {
