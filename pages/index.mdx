@@ -1,29 +1,31 @@
 # TxPipe RFCs
+
 The "RFC" (request for comments) process is intended to provide an open, organized location to discuss changes to TxPipe tools an libraries. The end goal is to provide all stakeholders with a mechanism for participation and visibility on the direction of the project.
 
 Small changes, including bug fixes, documentation, small refactorings, etc, can be implemented and reviewed via the normal GitHub pull request workflow, without the need for a RFC.
 
 Some changes though are "substantial", and we ask that these be presented through a PR to this repository, which should include a markdown document describing the proposal. The idea will be open to discussion by any interested member of the community. Acceptance of the proposal will require a final approval of the code owners.
 
-## Procedure
+## Submit Procedure
+
 Everyone is welcome to submit RFCs and participate in existing ones. To submit a new RFC:
 
 1. Fork the RFC repo [RFC repository](https://github.com/txpipe/rfcs)
-2. Copy `0000-template.md` to `text/0000-my-title.md` (where "my-title" is descriptive). Don't assign an RFC number yet; This is going to be the PR number.
+2. Copy `0000-template.mdx` to `pages/0000-my-title.mdx` (where "my-title" is descriptive). Don't assign an RFC number yet; This is going to be the PR number.
 3. Write the document and fill in the blanks.
 4. Submit a pull request. Use the issue number of the PR to update your `0000-` prefix to that number.
-5. Discussion takes place, and the text is revised in response.
-6. The PR is merged or closed when all of the members reach consensus.
-7. Any contributor can start working on the implementation of the proposal (RFC authors aren't necesarly responsible for the implementation).
+5. Initial review takes place, which consists in a quick evaluation of the topic's merit and scope.
+6. The PR is merged and content is published to https://rfcs.txpipe.io
+7. The feedback period beigns, any member can submit an issue to the repository describing questions, concerns or improvements.
 
 ## Active RFCs
 
-| Number                                | Name                                   | status      |
-| ------------------------------------- | -------------------------------------- | ----------- |
-| [0001](text/0001-pallas-addresses.md) | Pallas Addresses                       | [Done](#1)  |
-| 0002                                  | Dolos: Data Node                       | [Draft](#2) |
-| ????                                  | WebAssembly as Oura sink               | Planned     |
-| ????                                  | Kelley: Cardano Kubernetes Operators   | Planned     |
-| ????                                  | Pallas Traverse                        | Planned     |
-| ????                                  | Standalone Ouroboros Client            | Planned     |
-| ????                                  | Deprecate "Oura as a library" approach | Planned     |
+| Number                        | Name                                   | status   |
+| ----------------------------- | -------------------------------------- | -------- |
+| [0001](0001-pallas-addresses) | Pallas Addresses                       | Done     |
+| [0002](0002-dolos-data-node)  | Dolos: Data Node                       | Feedback |
+| [0004](0004-dapp-topologies)  | dApp Toplogies                         | Draft    |
+| ????                          | WebAssembly as Oura sink               | Planned  |
+| ????                          | Kelley: Cardano Kubernetes Operators   | Planned  |
+| ????                          | Pallas Upstream crate                  | Planned  |
+| ????                          | Deprecate "Oura as a library" approach | Planned  |
