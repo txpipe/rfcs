@@ -6,10 +6,10 @@ _dApp_ is a loaded term. This RFC _attempts_ to disambiguate the concept by desc
 
 ### Decentralized Apps
 
-In the context of this document, we'll assume the term "dApp" describes any distributed software system that incorporates one or many of the following charasteristics:
+In the context of this document, we'll assume the term "dApp" describes any distributed software system that incorporates one or many of the following characteristics:
 
 - **censorship resistant**: meaning that no single entity or organization can arbitrary limit the access of certain users to the system.
-- **self-accountability**: meaning that users can autonomosuly verify the correctnes of their interactions with the system, usually by means of cryptography and distributed consensus algorithms.
+- **self-accountability**: meaning that users can autonomously verify the correctness of their interactions with the system, usually by means of cryptography and distributed consensus algorithms.
 - **resilience**: meaning that the system is resistant to outages and other disruptions, not only at the technological level, but in particular at the _organizational_ level.
 
 This definition forces us to think of the concept "decentralized" as a non-binary quality that can be applied independently to different components of the same dApp.
@@ -22,27 +22,27 @@ In software architecture, a topology refers to the layout or arrangement of comp
 
 To describe the topology of a dApp, we need to define classes of components involved in the system. We identify the following classes for the purpose of this document:
 
-- **Frontend**: This component represents the UI that allows the end-user to interact with the system. There's no techonological constraint, it could be a web-based app, a mobile app, a CLI, etc.
-- **Busines Logic**: This component represents the rules and processes that govern the operations of the domain. It represents the core functionality of the system and is typically implemented in the form of algorithms and rules that define how the application should behave in different scenarios.
+- **Frontend**: This component represents the UI that allows the end-user to interact with the system. There's no technological constraint, it could be a web-based app, a mobile app, a CLI, etc.
+- **Business Logic**: This component represents the rules and processes that govern the operations of the domain. It represents the core functionality of the system and is typically implemented in the form of algorithms and rules that define how the application should behave in different scenarios.
 - **Custom State**: This component represents any domain-specific data of the system required to perform the operations defined by the business logic or frontend interactions. It usually provides some level of persistence across user sessions.
 - **Wallet State**: This component holds a representation of any self-custodial assets that the end-user can utilize as part of transactions involved in the interactions with the system. In a UTxO-based blockchain, it would represent the set of available UTxOs controlled by the user.
 - **Tx Builder**: This component represent the rules and processes that govern how transactions of self-custodial assets are defined in order to fullfil a particular interaction with the system by using the wallet state of the end-user. In a UTxO-based blockchain, this would be the coin-selection / balancing algorithm.
-- **On-Chain Validator**: This component represents the rules and proceses that govern domain-specific validations of transactions that occur as part of the cryptographically-secure consensus algorithm. Usually loosely refered to as "smart contract".
+- **On-Chain Validator**: This component represents the rules and processes that govern domain-specific validations of transactions that occur as part of the cryptographically-secure consensus algorithm. Usually loosely referred to as "smart contract".
 - **Blockchain Proxy**: This component represents an application programing interface (API) that serves as gateway between the system and any blockchain-related operations. At its minimum, it should include a mechanism to submit transactions and a mechanism to query on-chain data.
 
 ### Runtime Environment
 
-A dApp involves a certain level of _distribution_ of its constituent components accross different physical locations. We define each location as a _runtime environment_. We identify the following classes of common _runtime environments_:
+A dApp involves a certain level of _distribution_ of its constituent components across different physical locations. We define each location as a _runtime environment_. We identify the following classes of common _runtime environments_:
 
 - **End-user Device**: An execution environment managed directly by the end-user which holds a high-degree of confidence that data and processes are handled in a secure and private fashion. Common examples are: a browser session, a desktop application, a mobile application, etc.
-- **Cloud**: An execution enviornment that runs on servers accesible through a public network which are managed by a party different than the end-user. These are usually servers hosted in cloud providers such as AWS, Azure, GCP, etc and usually managed by the team in charge of the development of the system.
+- **Cloud**: An execution environment that runs on servers accessible through a public network which are managed by a party different than the end-user. These are usually servers hosted in cloud providers such as AWS, Azure, GCP, etc and usually managed by the team in charge of the development of the system.
 - **Blockchain**: An execution environment that runs on nodes participating in a distributed consensus algorithm. These are usually servers in a P2P topology that are managed by diverse parties. The degree of security and privacy of this environment is defined by the protocols and cryptographic algorithms in charge of the consensus.
 
 ## Topologies
 
 An architectural pattern is a general, reusable solution to a commonly occurring problem in software architecture within a given context. Architectural patterns are similar to software design patterns, but they are higher level and deal with the overall structure of the software system.
 
-In this section we describe different patterns of the topologies that we manage to identify. I doesn't pretend to be an exhasutive list of every posible dApp architecture, but rather a high-level abstraction that provides a common taxonomy that we, as developers, can use to exchange ideas.
+In this section we describe different patterns of the topologies that we manage to identify. It doesn't pretend to be an exhaustive list of every possible dApp architecture, but rather a high-level abstraction that provides a common taxonomy that we, as developers, can use to exchange ideas.
 
 <Callout>
   Instead of having very long names or cryptic acronyms for each topology, we're
@@ -70,7 +70,7 @@ This topology is similar to _Proshiuto_, in the sense that all of the business l
 
 ### Mushrooms
 
-This topology is refered to as a "headless app". The bulk of the business and state resides server-side, where access to the features are exposed through an API. 3rd parties, different fromt the dApp provider, can build independent frontends or provide new functionality by composing APIs.
+This topology is refered to as a "headless app". The bulk of the business and state resides server-side, where access to the features are exposed through an API. 3rd parties, different from the dApp provider, can build independent frontends or provide new functionality by composing APIs.
 
 ![Mushrooms](./0004-dapp-topologies/mushrooms.svg)
 
