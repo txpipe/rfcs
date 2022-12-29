@@ -27,6 +27,7 @@ To describe the topology of a dApp, we need to define classes of components invo
 - **Custom State**: This component represents any domain-specific data of the system required to perform the operations defined by the business logic or frontend interactions. It usually provides some level of persistence across user sessions.
 - **Wallet State**: This component holds a representation of any self-custodial assets that the end-user can utilize as part of transactions involved in the interactions with the system. In a UTxO-based blockchain, it would represent the set of available UTxOs controlled by the user.
 - **Tx Builder**: This component represent the rules and processes that govern how transactions of self-custodial assets are defined in order to fullfil a particular interaction with the system by using the wallet state of the end-user. In a UTxO-based blockchain, this would be the coin-selection / balancing algorithm.
+- **Private Keys**: The cryptographic keys that allows the holder to sign transactions on behalf of a particular identity.
 - **On-Chain Validator**: This component represents the rules and processes that govern domain-specific validations of transactions that occur as part of the cryptographically-secure consensus algorithm. Usually loosely referred to as "smart contract".
 - **Blockchain Proxy**: This component represents an application programing interface (API) that serves as gateway between the system and any blockchain-related operations. At its minimum, it should include a mechanism to submit transactions and a mechanism to query on-chain data.
 
@@ -52,13 +53,13 @@ In this section we describe different patterns of the topologies that we manage 
 
 ### Pepperoni
 
-This topology describes an end-user app where the bulk of the business logic resides on the server-side. Users interact with a frontend running on their device. The user's light wallet is leverages for signing transactions. The server-side acts as a gateway to the blockchain. It relies on on-chain validators for security.
+This topology describes an end-user app where the bulk of the business logic resides on the server-side. Users interact with a frontend running on their device. The user's light wallet is leveraged for signing transactions. The server-side acts as a gateway to the blockchain. It relies on on-chain validators for security.
 
 ![Pepperoni](./0004-dapp-topologies/pepperoni.svg)
 
 ### Prosciutto
 
-This topology describes an end-user app where all of the business logic resides client-side. Users interact with a frontend and business logic running on their device. The user's light wallet is leverages for signing transactions, accessing the wallet state and submitting transaction. There's no server-side involved.
+This topology describes an end-user app where all of the business logic resides client-side. Users interact with a frontend and business logic running on their device. The user's light wallet is leveraged for signing transactions, accessing the wallet state and submitting transaction. There's no server-side involved.
 
 ![prosciutto](./0004-dapp-topologies/prosciutto.svg)
 
@@ -85,3 +86,10 @@ This is the most centralized topology of the list. All of the business logic, st
 This topology aims at full self-accountability by running not only the frontend and business logic client-side, but also by having a full-node running on the client device. Users interactions are ran locally and transactions are submitted to the local blockchain node, which performs all the corresponding cryptographic validations.
 
 ![Bacon](./0004-dapp-topologies/bacon.svg)
+
+## Future Work
+
+The current state of the document only scratches the surface of the diversity of technologies and topologies in use. In future iterations of this RFC, we'll incorporate descriptions of more elaborated (more gourmet?) alternatives. The following list represents a broad list of topics to explore:
+
+- [ ] Describe _grid-computing infrastructure_ as potential replacement for traditional web2 cloud providers.
+- [ ] Describe distributed storage solutions, such as IPFS, and their role in existing dApp topologies.
