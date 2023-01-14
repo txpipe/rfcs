@@ -10,6 +10,17 @@ export default {
     useNextSeoProps() {
         return {
             titleTemplate: "%s – TxPipe RFCs",
+            description: "TxPipe's Request for Comments repository",
+            canonical: "https://rfcs.txpipe.io",
+            siteName: "TxPipe RFCs",
+            openGraph: {
+                url: "https://rfcs.txpipe.io",
+                title: "TxPipe RFCs",
+                description: "TxPipe's Request for Comments repository",
+            },
+            twitter: {
+                handle: "@txpipe_tools",
+            },
         };
     },
     footer: {
