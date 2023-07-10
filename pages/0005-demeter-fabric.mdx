@@ -1,0 +1,171 @@
+import { Callout } from "nextra-theme-docs";
+
+# Demeter Fabric
+
+A Decentralized Compute Grid Leveraging Kubernetes and Cardano Hydra L2
+State-Channels
+
+## Introduction
+
+In today's rapidly evolving technological landscape, the need for efficient and
+scalable computing resources has become increasingly important. As businesses
+and organizations adopt more complex workloads, there is a growing demand for
+innovative solutions that can handle diverse computing requirements while
+maintaining flexibility, cost efficiency, and security. To address these
+challenges, we present Demeter, a decentralized compute grid designed to host
+arbitrary compute workloads using Kubernetes clusters and leveraging the Cardano
+blockchain's Hydra L2 state-channels.
+
+This document outlines the key components, benefits, and technical aspects of
+the Demeter grid, exploring its potential as a next-generation distributed
+computing platform. We discuss the use of Kubernetes clusters, decentralized
+management, the roles of Operators and Applications, the Hydra L2 state-channel
+technology, and the extended UTxO model for low-level interactions. We also
+explore alternative methods for fair workload distribution to enhance the
+overall efficiency and experience for all parties involved. By delving into
+these aspects, we aim to provide a comprehensive understanding of the Demeter
+grid and its potential to transform the distributed computing landscape.
+
+## Rationale
+
+The Demeter Grid is conceived as a response to the growing need for efficient,
+scalable, and flexible computing solutions. The rationale behind the development
+of such a system lies in addressing the limitations of traditional computing
+infrastructures and capitalizing on the potential of emerging technologies.
+Here, we provide arguments in favor of the Demeter grid:
+
+1.  Scalability: As the demand for computing resources continues to grow,
+    traditional centralized systems face challenges in scaling up to accommodate
+    these needs. Demeter's decentralized architecture, based on Kubernetes
+    clusters, allows it to scale efficiently as new clusters can be added or
+    removed dynamically, ensuring that resource availability aligns with demand.
+2.  Cost Efficiency: Demeter's design promotes cost efficiency by matching
+    Applications' resource requirements with Operators' available resources
+    through a competitive bidding process. This ensures that Applications
+    receive the best resources at competitive prices, while Operators are
+    incentivized to optimize their offerings, leading to overall cost savings
+    for all parties.
+3.  Flexibility: Demeter's ability to host diverse workloads, ranging from
+    traditional batch processing to machine learning applications, ensures that
+    the grid can cater to a wide variety of computing needs. The use of
+    Kubernetes clusters further enhances flexibility, as resources can be easily
+    adjusted to accommodate changing requirements.
+4.  Security and Transparency: By leveraging blockchain technology, specifically
+    Cardano's Hydra L2 state-channels and Plutus smart contracts, Demeter
+    ensures a secure and transparent environment for resource allocation and
+    payment processes. This instills confidence in the system, as all parties
+    have access to verifiable information and can trust the fairness of the
+    allocation process.
+5.  Resilience: Demeter's decentralized architecture provides increased fault
+    tolerance and reduces the risk of service disruption. With multiple
+    Operators managing individual clusters, the grid can continue functioning
+    even if some clusters encounter issues, ensuring a reliable and robust
+    platform for hosting compute workloads.
+6.  Incentivizing Quality and Fairness: Alternative workload distribution
+    methods, such as auction-based or reputation-based allocation, encourage
+    Operators to improve their performance, reliability, and resource offerings.
+    This creates a competitive environment that benefits Applications by
+    providing them with high-quality resources and services.
+
+By addressing these challenges and harnessing the potential of Kubernetes and
+Cardano blockchain technologies, Demeter aims to revolutionize the distributed
+computing landscape, providing a robust, scalable, and efficient solution for
+hosting diverse compute workloads.
+
+## Actors and Interactions
+
+The Demeter grid is a decentralized compute platform designed to efficiently
+manage and allocate computing resources for a wide range of workloads. To
+understand its functionality, it's essential to explore the actors involved in
+the system and the interactions between them.
+
+### Actors:
+
+1.  Operators: Operators are responsible for managing the infrastructure of the
+    Kubernetes clusters. They maintain the hardware, network, and other
+    resources necessary for the proper functioning of the clusters. Their role
+    is to offer computing resources to the grid and respond to bids submitted by
+    Applications.
+2.  Applications: Applications are parties that host compute workloads on the
+    Demeter grid. They define their specific infrastructure requirements, such
+    as resource requests and price range, and submit bids to secure the
+    necessary resources from Operators.
+3.  Trusted Entities (optional): In scenarios where clusters join or leave the
+    grid dynamically, a group of trusted entities or nodes can be introduced to
+    act as representatives for the clusters in the Hydra Head. These entities
+    can be selected based on predefined criteria and ensure the source of trust
+    between Operators and Applications.
+
+### Interactions:
+
+1.  Bid Submission: Applications submit bids by sending an UTxO to a well-known
+    script address (Plutus validator) of the Hydra L2 state-channel. The bid
+    UTxO contains a datum representing the parameters of the bid, such as
+    resource requests and price range.
+2.  Operator Response: Operators monitor transactions on the L2 state-channel
+    and, upon detecting a bid UTxO, compete with each other (or participate in
+    alternative allocation methods, such as auction-based or reputation-based
+    allocation) to send a transaction that consumes the bid UTxO, indicating
+    their willingness to provide the requested resources at the specified price
+    range.
+3.  Resource Allocation: The system determines the winning Operator based on
+    predefined criteria (e.g., lowest price, best resource match, highest
+    reputation) and allocates the resources to the Application. Once the
+    resources are allocated, the Application can deploy its workload on the
+    assigned Kubernetes cluster.
+4.  Payment and Trust: Using Cardano's Hydra L2 state-channels and smart
+    contracts, secure and transparent transactions are facilitated between
+    Operators and Applications for resource allocation and payment.
+
+Through these interactions, the Demeter grid efficiently manages resource
+allocation and workload distribution among its actors. By leveraging the
+strengths of Kubernetes and Cardano blockchain technologies, Demeter provides a
+scalable, cost-efficient, and flexible solution for hosting various compute
+workloads in a secure and transparent.
+
+## Fair Workload Distribution
+
+In the Demeter grid, efficient and fair workload distribution plays a crucial
+role in optimizing resource allocation and ensuring a positive experience for
+both Applications and Operators. Here, we delve deeper into the different
+alternatives for fair workload distribution:
+
+1.  Auction-based Allocation:
+
+An auction-based allocation system allows Operators to submit their offers
+within a predefined time window after an Application submits a bid. The
+allocation is determined based on predefined criteria at the end of the window,
+such as the lowest price, best resource match, or a combination of factors. This
+method has several advantages:
+
+- Organized competition: Operators can submit their offers in an organized
+  manner without the need for a "race" to consume the bid UTxO.
+- Optimal resource allocation: Applications can receive the best available
+  resources at competitive prices, as Operators are incentivized to optimize
+  their offerings.
+- Transparent process: The auction-based allocation ensures that all parties
+  have access to the same information, promoting transparency and fairness.
+
+2.  Reputation-based Allocation:
+
+A reputation-based allocation system assigns a reputation score to each Operator
+based on their historical performance, reliability, and other relevant factors.
+When an Application submits a bid, the system prioritizes Operators with higher
+reputation scores, giving them the first opportunity to respond to the bid. This
+approach offers several benefits:
+
+- Incentivizing quality: By prioritizing Operators with higher reputation
+  scores, the system rewards those who consistently provide high-quality
+  services and incentivizes all Operators to improve their performance.
+- Trustworthy Operators: Applications can benefit from being matched with more
+  reliable and trustworthy Operators, increasing their confidence in the grid.
+- Balance between price and quality: Reputation-based allocation can strike a
+  balance between cost efficiency and quality, as Operators with higher
+  reputation scores are likely to provide better services at competitive prices.
+
+Both auction-based and reputation-based allocation methods can contribute to a
+fairer and more efficient workload distribution in the Demeter grid. By
+implementing these alternatives, the system can ensure an equitable and
+organized process that benefits both Applications and Operators, while
+maintaining the overall scalability, cost efficiency, and flexibility of the
+grid.
