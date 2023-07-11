@@ -1,0 +1,100 @@
+import { Callout } from "nextra-theme-docs";
+
+# Custom Blockchain Indexing on Cardano
+
+## Abstract
+
+This RFC proposes a mechansim to simplify the creation of custom indexes for
+Blockchain data in the Cardano ecosystem. The proposed system offers a unique
+approach that balances lightweight flexibility and specific use-case
+requirements.
+
+## Introduction
+
+Currently, indexing chain data presents significant challenges, primarily
+because every project has unique requirements. Existing indexing solutions are
+either too cumbersome or lack necessary features. The solution? We propose a
+framework that allows projects to define data filtering and aggregation logic in
+a concise Typescript file, utilizing the Map / Reduce algorithm. This tool then
+performs custom indexing and exposes a GraphQL API, thereby providing a bespoke
+solution for each project's needs.
+
+## Problem Context
+
+Chain data is vast and constantly growing. The full ledger structure is
+intricate, and most dApps only need a small fraction of the on-chain data
+relevant for their use-case. The current tools available attempt to offer
+one-size-fits-all solutions, which either require extensive storage and compute
+resources or provide limited query options.
+
+## The Ideal Scenario
+
+The ideal scenario is to have a tailored database for each dApp, containing only
+the relevant chain subset and designed specifically for the dApp's needs.
+Boilerplate code and infrastructure plumbing should be readily available through
+an SDK. Developers can then focus on adapting the SDK to their dApp's specific
+requirements. The solution should also include an easy and flexible querying
+system, ideally via a GraphQL endpoint. The deployment of such a solution should
+be straightforward and well-documented, with the added option of infrastructure
+service providers offering "indexing" clusters that can plug-and-play custom
+code for client dApps.
+
+## Use Cases
+
+The proposed solution can benefit a variety of applications, including:
+
+- A DEX could create custom indexes for their liquidity pools and swap
+  transaction history.
+- An NFT marketplace could create custom indexes for available collections,
+  bidding prices, total supply, and transaction history.
+- An Oracle could create custom indexes for the current value and history of
+  past values for their fact statement catalogs.
+- ADA Handles could be represented by a custom index that maps handles to the
+  latest address.
+- A dApp that requires batching of UTxOs could create custom indexes to keep
+  track of relevant UTxO required for their batching purposes.
+
+## Technical Plan
+
+We aim to build an open-source indexing engine, based on a modified version of
+Scrolls, that supports plugins. These plugins will run using either the Deno
+runtime or a WASM runtime, with each plugin providing two functions: "Map" and
+"Reduce". The indexing engine will crawl through the history of the chain,
+executing the Map / Reduce operations for each block. The output will then be
+stored in a relational database. Furthermore, we will integrate existing GraphQL
+libraries that automatically generate APIs from existing database schemas.
+
+## Benefits to the Cardano Ecosystem
+
+By solving one of the primary challenges of building dApps in Cardano, we are
+empowering developers to write less boilerplate code, focus more on
+core-business propositions, and simplify the onboarding process when starting to
+work on the Cardano ecosystem. By providing a validated solution similar to
+those already applied in other blockchain ecosystems, we aim to reduce the
+developer-experience gap that Cardano has compared to other ecosystems and
+simplify the migration of projects already building in other ecosystems that
+wish to integrate Cardano.
+
+## Measuring Success
+
+We plan to measure the success of the project by monitoring activity in the
+open-source GitHub repository, the number of external repositories that include
+this project as a dependency, and the number of dApp projects using this feature
+through the hosted version at Demeter.run.
+
+## Delivering the Project with High Levels of Trust and Accountability
+
+TxPipe, the team behind this project, has a strong track record of contributing
+to the Cardano ecosystem. Examples of our contributions include Pallas, a Rust
+library for Cardano used by several high-profile projects, and Oura, an
+off-chain data integration tool for Cardano used by many projects in the
+community. Our past achievements demonstrate our commitment to the Cardano
+community and the technical expertise required to develop and maintain Cardano
+infrastructure.
+
+## Conclusion
+
+In conclusion, our proposal to create custom indexes for Blockchain data aims to
+bring significant value to the Cardano ecosystem. By simplifying the process of
+creating chain indexers that are lightweight, flexible, and performant, we
+believe we can help the ecosystem grow and thrive.
