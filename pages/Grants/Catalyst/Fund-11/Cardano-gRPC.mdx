@@ -1,0 +1,55 @@
+# Title
+
+**gRPC ❤️ Cardano: A streaming API for Cardano using Dolos by TxPipe**
+
+# Problem
+
+Interacting with the Cardano node is extremely hard. It uses a custom binary protocol. Specs are incomplete. 
+Only Haskell is supported out-of-the-box. Only way to connect is via unix sockets.
+
+# Solution
+
+## Executive Summary
+
+- **Asteria** is an open hackathon, a bot challenge that leverages the eUTxO model.
+  - Players participate by moving their ships across a grid and gathering resources. ADA rewards are available to players that reach their chosen cells first.
+  - It aims to build a fun engagement through the Cardano UTxO governance mechanism, fostering the development framework known as UMO (User-Managed Objects).
+  - With ADA rewards/incentives and compelling experiences, we hope to attract developers from both inside and outside the Cardano ecosystem.
+
+## Mechanics
+
+In this bot challenge, you compete by moving your ship (your bot) through a 2D grid. The ship must move to the nearest airlocks to collect the resources.
+
+- **Ships**: Ships are implemented as UTxOs with a datum holding a pair of (x, y) coordinates that represent their position in the 2D grid. To move a ship, a transaction must consume the UTxO and create a new one with the updated position.
+
+![Grid Movement](https://your-image-link-here.com/grid-movement.png)
+
+Movement of the ship is constrained by a **Space-Time** on-chain script that limits their velocity. Strictly speaking, the max distance that a ship can move in any given transaction has a certain upper bound. Distances are defined using [Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry) to simplify the math.
+
+![Movement Constraints](https://your-image-link-here.com/movement-constraints.png)
+
+Movement of the ship is also constrained by a factor that is required for any change in position. A specific amount of ADA is required per distance unit. The lack of the required fuel amount will block the movement of the ship.
+
+![Fuel Requirements](https://your-image-link-here.com/fuel-requirements.png)
+
+- **Objective**: To accumulate fuel, ships must gather these tokens which are distributed randomly across the same grid. To gather a fuel token, your ship needs to be in the same coordinate as the fuel.
+
+To create a ship, a participant must mint the corresponding NFT from the valid policy. A minimum amount of ADA must be required per move. This ADA can be used as the prize pool or a reward that can be redistributed to the grid. The prize pool is the ADA staked to reward the players who accumulate the highest fuel tokens.
+
+A unique UTxO is placed as the final destination of the grid: the center for the winner of the challenge. The last player to accumulate the most fuel and reach the center of the grid first claims victory and takes the bulk of the total reward.
+
+## More Information
+
+If you're interested in learning more about the project, even outside the scope of the Catalyst proposal, join our discussion on [Discord](https://discord.gg/asteria). We'll make sure to maintain the README updated with relevant information and news.
+
+# Total Funds Requested
+
+**ADA 177,082**
+
+# Status
+
+*1/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](hhttps://utxorpc.org)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/11/cardano-open-developers/grpc-cardano-a-streaming-api-for-cardano-using-dolos-by-txpipe)**

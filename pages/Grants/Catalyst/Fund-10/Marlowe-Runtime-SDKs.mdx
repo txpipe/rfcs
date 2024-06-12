@@ -1,0 +1,57 @@
+# Title
+
+**Marlowe Runtime SDKs**
+
+# Problem
+
+Marlowe is a brand new framework for building and running financial contracts. Marlowe Runtime is the backend 
+for interacting with the blockchain. We need SDKs to easily interact with the backend.
+
+# Solution
+
+## Context
+
+- **Marlowe** is a brand new language and runtime for developing financial smart contracts.
+- **Marlowe contracts** are built by combining a small number of building blocks that describe making a payment, waiting for a certain condition, and other similar types of concepts.
+- **The Marlowe Runtime** is the backend component of the Marlowe framework that handles interaction with the blockchain. It exposes a REST API that provides operations such as: get-contracts, create-contracts, etc.
+- To interact with the backend, developers need to manually craft the REST API Requests, which involves a lot of boilerplate code with little specific value to their particular use-case.
+
+## Technical Plan
+
+We'll build a set of idiomatic SDKs (software development kits) in common programming languages with the goal of reducing the boilerplate required to interact with the Marlowe Runtime API.
+
+The selected languages are:
+
+- **Rust**
+- **Go**
+- **Python**
+- **JavaScript (TypeScript)**
+- **.NET (written in C#)**
+
+The rationale for selecting the above languages is the following: they are the subset of popular languages in the Cardano ecosystem that overlap with the technical expertise of our team. Meaning, these are the languages we know how to implement and that we believe will provide value in the ecosystem.
+
+Each SDK will present the following features:
+
+- All data structures defined by the core Marlowe spec will have their types represented as part of the SDK. We'll explore how to abstract this type into its module for potential reutilization in other contexts.
+- For the Marlowe Runtime operations, each API method will be represented as callable functions, making use of whatever asynchronous IO mechanic is provided by the language. This will also be abstracted into its own module to decouple it from the core types (previous bullet).
+- Naming of structures and functions will respect the naming conventions of the corresponding language (e.g., use camelCase for JavaScript and snake_case for Python).
+- Client-side validations will be executed by the SDK to avoid errors due to invalid requests.
+- Appropriate logging will be added in relevant functions to facilitate debugging.
+- Code-generation from the OpenAPI spec will be leveraged wherever possible to streamline SDK updates on future changes of the API.
+- DocStrings will be available whenever possible to improve integration with IDEs and documentation sites.
+- Public packages will be published to the corresponding package manager of the language, if any (e.g., NPM package, Crates.io package, PyPI package).
+
+There’s an existing effort for a **[Typescript SDK](https://github.com/input-output-hk/marlowe-js-sdk)** being done by IOHK. Our plan is to reach out to the specific devs behind the project and seek a plan for integrating both projects into a unified effort that covers all of the languages mentioned.
+
+
+# Total Funds Requested
+
+**ADA 154,286**
+
+# Status
+
+*Completed*
+
+**[Github](https://github.com/marlowe-contrib)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/10/f10-developer-ecosystem-the-evolution/marlowe-runtime-sdks)**

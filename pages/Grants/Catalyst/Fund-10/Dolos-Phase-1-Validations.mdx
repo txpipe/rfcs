@@ -1,0 +1,54 @@
+# Title
+
+**Dolos - A step closer to a Rust node - Phase-1 Validations**
+
+# Problem
+
+A healthy Cardano ecosystem will require Node diversity. An alternative Rust node would be ideal but it’s a huge endeavor 
+that requires multi-year planning and lots of resources.
+
+# Solution
+
+## Context
+
+- **Node Diversity**: Having node diversity (more than one implementation of the Cardano node) will make the whole ecosystem more resilient.
+- **Full Node Implementation**: A full node is a major endeavor; we estimate it to be a multi-year project with multidisciplinary engineers on the team.
+- **Project Scope**: Given the magnitude, we consider that our team wouldn’t be able to achieve the goal within the context of a single Catalyst proposal.
+- **Divide-and-Conquer Strategy**: This strategy can be used to split the project into several pieces, each one achievable as stepping stones for a final implementation some time from now.
+- **Dolos Project**: The "Dolos" project provides a lightweight implementation of a node which is focused solely on basic data tasks (keeping track of the chain, accessing UTxO state, serving data to client applications).
+
+## Scope of the Proposal
+
+- **Incremental Development**: Slowly build on top of "Dolos" new features, each one bringing us one step closer to a full implementation.
+- **Flexible Architecture**: Maintain a flexible architecture that allows different flavors of the end application so that new features don’t compromise the lightweight characteristics of Dolos.
+- **Phase-1 Validations**: As the next big feature, we plan on adding the business logic to perform "Phase-1 Validations" of the block transactions, providing as benefit a higher level of self-accountability of the chain correctness.
+
+## Technical Implementation
+
+- **Phase-1 Validation**: Roughly speaking, Phase-1 validation is defined as all the checks required for a transaction to be added to the ledger excluding the execution of Plutus scripts. Nodes are not compensated for this work, and transactions that fail this validation are rejected without being included into a block and without paying any fee or collateral.
+- **Cardano Ledger Specifications**: All the validation rules are specified and implemented in the Cardano Ledger. The specification is split into several documents, one for each era, describing incrementally the modifications and additions that each era introduced. For each era, there is also a part of the specification, a CDDL file that precisely defines the CBOR schema used for blocks and transactions. For any aspect of the rules not specified in the documentation, the implementation of the Cardano Ledger in Haskell serves as a reference.
+- **Reverse Engineering**: To obtain a comprehensive and precise definition of the Phase-1 validation rules, it is necessary to perform a complete reverse engineering work that requires studying the specification documents for all the eras (Byron, Shelley, Mary, Alonzo, and Babbage) and the Haskell source code of the ledger implementation.
+- **Classification of Phase-1 Rules**: The big set of Phase-1 rules can be divided into groups according to the aspects they refer to, and to the contextual information required to check them. We arbitrarily choose to organize the rules into the following categories:
+  1. Basic transaction structure: CDDL compliance, integrity hashes, size limits, etc.
+  2. Basic ledger rules: input UTxOs existence, current slot in validity interval, etc.
+  3. Fees and collateral: correct amounts according to protocol parameters.
+  4. Output value: input/output balance, collateral balance, min lovelace per output, etc.
+  5. Witnesses: required signatures, scripts, redeemers and data.
+  6. Phase-1 scripts: native script execution.
+  7. Staking: credentials and withdrawals, etc.
+  8. Other: protocol parameter update proposals, bootstrap witnesses, etc.
+
+- **Implementation Focus**: For this proposal, we plan to implement the validation rules in the first five categories (a, b, c, d, and e). We understand that this set of rules accounts for an important part of the current ledger and that, given the budget constraints, it is a reasonable increment in the path to a fully functional Rust node.
+- **Network Synchronization**: With this implementation, we will be able to synchronize all the public networks (mainnet, preprod and preview) with an important coverage of the ledger rules. This will enable us to provide fast and reliable information regarding the remaining aspects of Phase-1 validation that require further development in the future.
+# Total Funds Requested
+
+**ADA 182,142**
+
+# Status
+
+*Completed*
+
+**[Github](https://github.com/txpipe/dolos)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/10/f10-osde-open-source-dev-ecosystem/dolos-a-step-closer-to-a-rust-node-phase-1-validations)**
+

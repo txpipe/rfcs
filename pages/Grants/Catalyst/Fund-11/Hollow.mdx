@@ -1,0 +1,46 @@
+# Title
+
+**Hollow by TxPipe: Headless dApp Framework, a friendly SDK for off-chain development**
+
+# Problem
+
+Cardano relies heavily on off-chain computation by design.
+On-chain dev tools have evolved greatly (eg: Aiken).
+Off-chain is neglected, developers re-invent the wheel in each project.
+
+# Solution
+
+Executive summary
+
+We'll build an SDK to streamline Cardano dApp development by decoupling business logic from all the required infrastructure required to connect it to the blockchain.
+The SDK will include a hosting runtime. Developers will be able to code, test and run their dApps with the level of simplicity required to run a Docker container.
+The SDK will include CLI to perform common development tasks such as code-generation and test execution.
+The proposal includes the integration of the SDK with Demeter to provide an optional, simple mechanism to deploy dApps to the cloud.
+What's a headless dApp
+
+"Headless dApp" refers to the idea of decoupling the business logic from the external context by forcing all inputs and outputs through a well-defined interface. To run your app, you'll need a generic runtime that knows how to connect your business logic to the outside world.
+
+
+This strict separation of concerns provides several benefits:
+
+portability: you can run your app in different contexts depending on your needs. From the terminal, on your browser, on the cloud, etc. As long as you have a compatible runtime to host your app, you should be good.
+composability: by having a concrete, programatic interface to interact with the business logic of your app, you can "compose" complex apps that orchestrating other apps to fulfill a higher-level objective.
+multiple frontends: your app can have multiple frontends, maybe even developed by different teams. For example, a DEX could have different web frontends, the user could pick their favorite.
+less plumbing: the runtime component can be quite generic and reused by many dApps. There's no need to re-implement how to query on-chain data, how to build transactions, how to submit transaction, etc. You can focus just on your business logic knowing that plumbing is already taken care of.
+The Hollow SDK is meant to provide the required artifacts to build headless Cardano dApps in a developer friendly way. It provides all of the plumbing out-of-the-box, you just need to relax and enjoy the ride.
+
+More information
+
+If you're interested in learning more about the project, even outside the scope of the Catalyst proposal, please bookmark our git repository. We'll make sure to maintain the README updated with relevant information and news.
+
+# Total Funds Requested
+
+**ADA 194,444**
+
+# Status
+
+*1/5 Milestones completed - Expected completion for September 2024*
+
+**[Github](https://github.com/txpipe/hollow)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/11/cardano-open-developers/hollow-by-txpipe-headless-dapp-framework-a-friendly-sdk-for-off-chain-development)**
