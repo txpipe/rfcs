@@ -1,0 +1,35 @@
+## Title
+
+**Telchar: Validator Interface Toolchain by TxPipe**
+
+## Problem
+
+Integrating Plutus validators in off-chain processes is complex, especially when it comes to discovery and code generation for different off-chain components. Developers face challenges in managing boilerplate code and discovering existing on-chain validator interfaces.
+
+## Solution
+
+We’ll develop the **Telchar** toolchain, which focuses on two areas: discovery and code generation (codegen) for Plutus validator interfaces. The toolchain will consist of three components:
+
+- **Blueprint Registry**: 
+  - A public registry of validator interfaces that will allow developers to discover, publish, and search for Plutus validator interfaces.
+  - Support for parameterized scripts and known parameterizations to facilitate transaction creation.
+  - A public and private version of the registry to cater to different use cases.
+
+- **Telchar CLI**: 
+  - A command-line tool to automate the publishing of blueprint files, code generation from blueprints for use in libraries (e.g., Lucid, Plu-ts, Pallas), and the deployment of fully defined scripts as on-chain UTxOs.
+
+- **Telchar Library**: 
+  - A Rust library that provides the functionality of the CLI for other tools, with FFI bindings for languages such as Python and Node.js.
+  - Functions for parsing blueprint files and a registry client for programmatically interacting with blueprint registries.
+
+## Total Funds Requested
+
+**198,750 ADA**
+
+## Status
+
+*0/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](https://github.com/txpipe/telchar)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/12/f12-cardano-open-developers/telchar-validator-interface-toolchain-by-txpipe)**

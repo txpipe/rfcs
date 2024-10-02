@@ -1,60 +1,58 @@
-# Title
+## Title
 
-**Dolos: Cardano “Data Node”**
+**Dolos: Cardano "Data Node"**
 
-# Problem
+## Problem
 
-Nodes used exclusively as data source for client tools have different requirements than block producers / relays nodes. Many performance / cost optimizations are not currently possible.
+Nodes used exclusively as data sources for client tools have different requirements than block producers or relay nodes. Many performance and cost optimizations are not currently possible.
 
-# Solution
+## Solution
 
 Cardano nodes can assume one of two roles:
 
-- **Block Producer**: in charge of minting blocks.
-- **Relay Node**: in charge of relaying blocks from/to peers.
+- **Block Producer**: Responsible for minting blocks.
+- **Relay Node**: Responsible for relaying blocks between peers.
 
-Each of these roles has concrete responsibilities and runtime requirements. Criteria such as network topology, resource allocation, backup procedures, etc., vary by role.
+Each of these roles has distinct responsibilities and runtime requirements, such as network topology, resource allocation, and backup procedures.
 
-We argue that there’s a third role that should be treated independently with the goal of optimizing its workload: nodes that are used with the sole purpose of resolving local state queries or serving as a data source for downstream tools that require ledger data.
+We propose a third role, optimized for resolving local state queries or serving as a data source for downstream tools requiring ledger data.
 
-There are many potential optimizations for nodes performing this type of workload that are not currently possible with the Cardano node:
+Key optimizations for data nodes include:
 
-- Drastically limiting the amount of memory required to execute the node.
-- Switching to storage solutions with different trade-offs (e.g., S3, NFS, etc.).
-- Providing alternative wire protocols more friendly for data queries (e.g., REST, gRPC).
-- Providing an auth layer in front of the API endpoints.
+- Reducing memory usage.
+- Using different storage options (e.g., S3, NFS).
+- Introducing alternative data-friendly protocols (e.g., REST, gRPC).
+- Adding an authentication layer for API endpoints.
 
-The goal of this project is to provide a very limited and focused version of the Cardano node that can be used by DevOps as a cost-effective, performant option to deploy **data nodes** side-by-side with the producer/relay nodes.
+The project aims to create a focused version of the Cardano node tailored for data node deployment alongside producer and relay nodes. This new node type will be optimized for the following scenarios:
 
-This new role would be useful in the following scenarios:
+- Serving as a data source for tools such as DB-sync, Ogmios, CARP, and Oura.
+- Acting as a low-resource node for syncing producer/relay nodes.
+- Scaling dynamically based on query load.
+- Using network/cloud storage instead of mounted drives.
+- Enabling horizontal scaling for high-availability topologies.
+- Acting as a local low-resource node for state query resolution.
 
-- As a data source for well-known tools such as DB-sync, Ogmios, CARP, Oura, etc.
-- As a fast, low-resource node for syncing other producer/relay nodes.
-- As a ledger data source that scales dynamically according to query load.
-- As a node that leverages network/cloud storage technology instead of mounted drives.
-- As a node that scales horizontally, allowing high-availability topologies.
-- As a low-resource local node for resolving local state queries.
+The data node will share some features with the mainstream Cardano node:
 
-Data nodes will share some of the features with the mainstream Cardano node:
+- **Node-to-Node and Node-to-Client Chain-Sync mini-protocol**.
+- **Node-to-Node Block-Fetch mini-protocol**.
+- **Node-to-Client Local-State-Query mini-protocol**.
 
-- Node-to-Node and Node-to-Client Chain-Sync mini-protocol
-- Node-to-Node Block-Fetch mini-protocol
-- Node-to-Client Local-State-Query mini-protocol
+Additionally, the data node will introduce the following new features:
 
-This new type of node will also provide features not currently available in the mainstream Cardano node:
+- **HTTP/JSON endpoint** for common local state queries.
+- **gRPC endpoint** for local state queries and chain-sync procedures.
+- **Support for alternative storage options**, such as NFS, S3, and GCP Buckets.
+- **Low memory consumption**, enabled by trade-offs in scope.
 
-- HTTP/JSON endpoint for common local state queries.
-- gRPC endpoint for local state queries and chain-sync procedure.
-- Different storage options including NFS, S3 & GCP Buckets.
-- Low memory consumption (allowed by the trade-offs in scope).
+**Dolos** will be developed as an open-source project using Rust, heavily leveraging the Pallas library developed by the team (currently at version 0.11).
 
-**Dolos** will be developed as an open-source project using Rust as its main development language. The code will do heavy usage of the Pallas library developed by this team and already available as version 0.11.
-
-# Total Funds Requested
+## Total Funds Requested
 
 **USD 75,680**
 
-# Status
+## Status
 
 *Completed*
 

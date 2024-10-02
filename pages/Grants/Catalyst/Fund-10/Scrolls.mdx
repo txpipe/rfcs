@@ -1,15 +1,15 @@
-# Title
+## Title
 
 **Scrolls - Develop and deploy Custom GraphQL chain indexes**
 
-# Problem
+## Problem
 
 Indexing chain data is complex, every project has particular requirements. There’s no silver bullet, 
 generic indexing solutions are either too heavy or lack required features.
 
-# Solution
+## Solution
 
-## Context
+### Context
 
 - **On-chain Data Growth**: On-chain data is massive and only keeps increasing.
   - Final ledger inclusion is very complex.
@@ -23,13 +23,13 @@ generic indexing solutions are either too heavy or lack required features.
       - The Pallas data set and transform.
       - The tokens contained in a particular label.
 
-## Current Scenario
+### Current Scenario
 
 - **Existing Solutions**: Some teams approach the problem with ad-hoc one-off final solutions.
   - We have run ad-hoc DBSync or Carp that approaches the problem by trying to replicate all the information at gigantic scales. This makes them too fully laminated or keeps replication ongoing across all periods, increasing replication of common resources: queries, queries, etc.
 - **Drawbacks of Current Tools**: We have tools like Kupo or Scrolls that approach the problem by having an endpoint with the data that is broadcast. These tools may be lightweight; others don’t allow quick query transformations and are optimized. Once the available params are limited, their scope and cost are limited.
 
-## Solution
+### Solution
 
 - **Customized Indexing**: Each dApp should have a tailored-made database for their particular use case.
   - This database would store only the on-chain data relevant to the dApp.
@@ -52,7 +52,7 @@ For more details on this approach, you can refer to our [Scrolls RFC](https://gi
 - **User Data**: dApps focused on user engagement could create indexes that map handles to the latest metadata.
 - **Batch Processing**: A dApp that requires batching of UTxOs could create custom indexes to keep track of UTxOs required for their batching purposes.
 
-## Technical Plan
+### Technical Plan
 
 (https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-19.35.18-7da4e4/png)
 
@@ -67,13 +67,13 @@ For more details on this approach, you can refer to our [Scrolls RFC](https://gi
 By providing a flexible and open SDK, we aim to make it easier for dApps to build and manage their own custom indexing solutions, helping them to efficiently access and process the on-chain data relevant to their specific needs.
 
 
-# Total Funds Requested
+## Total Funds Requested
 
 **ADA 207,857**
 
-# Status
+## Status
 
-*3/5 Milestones completed - Expected completion for September 2024*
+*Completed*
 
 **[Github](https://github.com/txpipe/scrolls)**
 

@@ -1,15 +1,15 @@
-# Title
+## Title
 
 **Marlowe - Decentralized Oracle Integration**
 
-# Problem
+## Problem
 
 Marlowe is a brand new framework for building and running financial contracts. 
 Decentralized oracles are a mandatory component in many scenarios. Marlowe lacks integration with decentralized oracles.
 
-# Solution
+## Solution
 
-## Context
+### Context
 
 - **Marlowe** is a brand new language and runtime for developing financial smart contracts.
 - **Marlowe contracts** are built by combining a small number of building blocks that describe making a payment, waiting for a certain condition, and other similar types of concepts.
@@ -18,7 +18,7 @@ Decentralized oracles are a mandatory component in many scenarios. Marlowe lacks
 - **Charli3** is the more notable decentralized Oracle protocol in the Cardano ecosystem. There's also **Orcfax** which is still in development, as far as we know.
 - **Marlowe** currently has a mechanism to inject information feeds from external sources into contract actions, but it requires a high degree of trust from the participants of the contract.
 
-## Technical Plan
+### Technical Plan
 
 Build a new off-chain component on top of the current Marlowe backend (the Marlowe Runtime) that integrates Marlowe contracts with feeds from **[Charli3](https://charli3.io)**.
 
@@ -39,11 +39,11 @@ Build a new on-chain validator that will participate in the transaction that act
 
 Lastly, combine both off-chain and on-chain components into a package for easy provisioning and execution by third-party teams.
 
-# Total Funds Requested
+## Total Funds Requested
 
 **ADA 235,714**
 
-# Status
+## Status
 
 *Completed*
 

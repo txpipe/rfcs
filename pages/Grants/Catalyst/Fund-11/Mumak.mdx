@@ -1,15 +1,14 @@
-# Title
+## Title
 
 **Mumak by TxPipe: A PostgreSQL custom extension to process raw Cardano CBOR**
 
-# Problem
+## Problem
 
 Cardano data is usually serialized as CBOR. Storing Cardano in databases requires a mapping between CBOR and the relational model. This mapping is complex, expensive and usually suboptimal.
 
-# Solution
-# Mumak: PostgreSQL Extension for Cardano
+## Solution
 
-## Executive Summary
+### Executive Summary
 
 - We'll build a custom PostgreSQL extension that allows you to interact with Cardano CBOR data directly.
 - Developers will be able to store raw CBOR as table columns and use our extensions to evaluate predicates and projections directly.
@@ -19,7 +18,7 @@ Cardano data is usually serialized as CBOR. Storing Cardano in databases require
 - We'll integrate Mumak into TxPipe's Scrolls indexer providing a way to create richer datasets in a simpler way.
 - We'll integrate the Mumak service on the Demeter platform so that it can be accessed directly without the need of provisioning your own instance.
 
-## Introduction
+### Introduction
 
 The de facto wire format used to exchange Cardano data is **CBOR**. By Cardano data, we refer to Blocks, Transactions, UTxOs, Certificates, and all of their inner structures.
 
@@ -37,7 +36,7 @@ For example, this means that you could store a whole Cardano transaction as CBOR
 
 The evaluation of these values will happen in-process, as part of the database query execution.
 
-## Usage Example
+### Usage Example
 
 Let's say that we have a table where we store transactions in CBOR format. By doing this, we could connect to the PostgreSQL instance and run queries like these:
 
@@ -74,17 +73,17 @@ SELECT
 WHERE
   delegation_part(address) = '0x000';
 ```
-## More Information
+### More Information
 
 If you’re interested in learning more about the project, even outside the scope of the Catalyst proposal, please bookmark our [git repository](https://github.com/txpipe/mumak). We'll make sure to maintain the README updated with relevant information and news.
 
-# Total Funds Requested
+## Total Funds Requested
 
 **ADA 170,714**
 
-# Status
+## Status
 
-*1/5 Milestones completed - Expected completion for August 2024*
+*4/5 Milestones completed - Expected completion for August 2024*
 
 **[Github](https://github.com/txpipe/mumak)**
 

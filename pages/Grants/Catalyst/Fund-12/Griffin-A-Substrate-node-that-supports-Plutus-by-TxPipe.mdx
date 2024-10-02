@@ -1,0 +1,34 @@
+## Title
+
+**Griffin: A Substrate node that supports Plutus by TxPipe**
+
+## Problem
+
+Substrate is an SDK to build use-case specific blockchains. It's a very flexible tool that fulfills a role complementary to Cardano, but it lacks support for running Plutus validators.
+
+## Solution
+
+We’ll build a Substrate-compatible runtime for Cardano developers to leverage their Plutus experience when building use-case-specific blockchains. The solution will include the following features:
+
+- **UTxO-based ledger**: This ledger will resemble the Cardano ledger, with the exception of staking, delegation, and governance primitives.
+- **Extended UTxO primitives**: We'll replicate the programmability primitives around UTxO (datums, redeemers, scripts, etc.), so these concepts remain analogous to Cardano.
+- **Plutus VM**: We'll integrate a virtual machine capable of executing Plutus scripts that can be created using existing Plutus tooling and languages, such as Aiken.
+
+We'll also build a client node reference implementation using Substrate that integrates the following components:
+
+- **RPC interface**: A mechanism to interact with the node using a network RPC interface, for extrinsic event submission and management.
+- **Aura consensus**: A proof-of-authority (PoA) consensus protocol where only approved nodes are allowed to create new blocks.
+- **Grandpa block finality**: A Byzantine fault-tolerant finality gadget that provides deterministic finality.
+- **Libp2p networking**: A battle-tested peer-to-peer networking library providing transport, discovery, and routing.
+
+## Total Funds Requested
+
+**198,750 ADA**
+
+## Status
+
+*0/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](https://github.com/txpipe/griffin)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/12/f12-cardano-open-developers/griffin-a-substrate-node-that-supports-plutus-by-txpipe)**

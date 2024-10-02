@@ -1,65 +1,61 @@
-# Title
+## Title
 
 **Decentralized Demeter.run - Federated Frontend Hosting - New revenue stream for SPOs**
 
-# Problem
+## Problem
 
-Even permissionless dApps are subject to censorship if the frontend (UI) is hosted on a 
-centralized hosting provider. Running global, performant, decentralized frontends is hard and expensive.
-
-# Solution
-
-# Demeter Project Proposal
-
-## What’s a Frontend?
-
-- A frontend is a web app or a mobile app that provides a friendly user interface. End-users interact with dApps through a frontend.
-- Without a frontend, interacting with the blockchain would require manual crafting of very complex transactions and a thorough understanding of on-chain data.
-- Frontends are key components to any dApp and as such, they need to be reliable, performant, have global scale, and easy to develop/maintain.
-- Today, most frontends rely on one of a small set of big cloud service providers such as AWS, Azure, Google Cloud, etc., primarily because they are the best available option to achieve the levels of reliability and performance required.
-
-## Problems with Current Approach
-
-- **Not censorship resistant**: If the cloud provider decides (or is coerced) to shutdown the frontend, interacting with the dApp would be drastically affected.
-- Using solutions like IPFS for content distribution would be censorship-resistant but they are extremely limited in capabilities: no server-side processing, no database, no load-balancing, no in-place updates, no detailed monitoring, etc.
-- **Poor competition**: To get the benefits of the cloud, developers end up having to choose from a very short list of providers. These providers have little incentive for standardization of their features, so developer effort ends up locked-in to particular providers.
-- Too generic: common cloud providers don't provide any Cardano-specific components (e.g., Cardano Node, DBSync, Kupo, etc.) and need to be manually implemented/managed by the dApp team. This adds complexity and increases TCO (Total Cost of Ownership).
+Even permissionless dApps are subject to censorship if the frontend (UI) is hosted on a centralized hosting provider. Running global, performant, decentralized frontends is hard and expensive.
 
 ## Solution
 
-- An open-source hosting platform (Demeter.net) that provides a developer experience similar to Vercel or Netlify. Developers build their React, NextJS or Remix frontend and then run a ‘publish’ command.
-- A set of independent stake pool operators (SPOs) across the globe where the app runs and monitors as an infrastructure service provider.
-- A fair load-balancing mechanism that distributes end-users’ web requests to the different available SPOs, taking into account a past-performance reputation score.
-- A bookkeeping mechanism on top of a distributed ledger that takes care of charging and compensating the different actors using an on-chain smart contract.
-- Although the system would not be limited to Cardano dApps, SPOs could provide Cardano-specific services (access to Cardano Node, DBSync, etc.) as an extra revenue stream. This simplifies operations for dApps and reduces costs by allowing sharing of common instances.
+The **Demeter Project Proposal** aims to solve the problem of frontend hosting with the following approach:
 
-## Scope for this Proposal
+### What’s a Frontend?
 
-The solution described above is very ambitious. The scope of this proposal is to build a PoC (proof of concept) implementation with the following characteristics:
+- A frontend is a web app or mobile app providing a user-friendly interface. End-users interact with dApps through this frontend.
+- Without a frontend, interacting with the blockchain would require manual creation of complex transactions and a deep understanding of on-chain data.
+- Frontends are critical for any dApp, requiring reliability, performance, scalability, and ease of development and maintenance.
+- Currently, most frontends rely on large cloud service providers such as AWS, Azure, or Google Cloud, primarily due to their reliability and performance.
 
-- Include a minimum of 2 SPOs participating as infrastructure providers. This will give a total of 3 different entities providing infrastructure (since TxPipe will remain as provider).
-- Include between 10 and 200 real-world frontends hosted in the platform.
-- An MVP version of the bookkeeping mechanism that is suitable for a small-scale group of trusted entities. Scaling the bookkeeping process to a larger group of entities will require some improvements which are out of the scope of this proposal.
-- An MVP version of the load-balancing mechanism that will provide all the required features.
-- Personalized training for participating SPOs so that they can run their partition of the system.
-- A marketing campaign to encourage dApp developers wanting to use this service. This will incentivize users to lower dApp operating expenses and provide direct revenue to participating SPOs.
+### Problems with Current Approach
 
+- **Not censorship-resistant**: If the cloud provider shuts down or is coerced to do so, the dApp becomes inaccessible.
+- **Limited capabilities of alternatives**: Solutions like IPFS provide censorship resistance but lack server-side processing, load-balancing, in-place updates, and monitoring.
+- **Poor competition**: Developers are locked into a short list of providers, with little incentive for standardization, leading to vendor lock-in.
+- **Cardano-specific complexity**: Generic cloud providers don’t provide Cardano-specific tools (e.g., Cardano Node, DBSync, Kupo) by default, adding complexity and increasing total cost of ownership.
+
+### Solution
+
+- An open-source hosting platform (**Demeter.net**) that offers a developer experience similar to Vercel or Netlify.
+- A network of independent stake pool operators (SPOs) providing hosting infrastructure globally.
+- A **fair load-balancing mechanism** that distributes web requests based on a reputation score of SPO performance.
+- A **bookkeeping system** built on a distributed ledger for managing charges and compensating participants via a smart contract.
+- SPOs would also provide **Cardano-specific services** (e.g., access to Cardano Node, DBSync), generating additional revenue.
+
+### Scope for this Proposal
+
+The proposal seeks to build a **Proof of Concept (PoC)** with the following features:
+
+- At least 2 SPOs as infrastructure providers alongside TxPipe.
+- Support for 10 to 200 real-world frontends hosted on the platform.
+- A minimum viable version of the **bookkeeping mechanism** for trusted entities.
+- A minimum viable version of the **load-balancing mechanism** with all required features.
+- Personalized training for SPOs to operate the system.
+- A marketing campaign to encourage dApp developers to adopt the platform.
 
 ![Federated Demeter Topology](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-16.57.18-62a4cd/png)
 
-
 ![dApp Deployment](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-17.00.33-184166/png)
-
 
 ![DNS Resolve](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-17.02.57-c53098/png)
 
-# Total Funds Requested
+## Total Funds Requested
 
 **ADA 407,857**
 
-# Status
+## Status
 
-*4/6 Milestones - Expected to end in August 2024*
+*Completed*
 
 **[Github](https://github.com/demeter-run)**
 

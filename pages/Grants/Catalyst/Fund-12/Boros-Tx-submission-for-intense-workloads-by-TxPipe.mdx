@@ -1,0 +1,31 @@
+## Title
+
+**Boros: Tx submission for intense workloads by TxPipe**
+
+## Problem
+
+dApps with intense transaction submission workloads require high throughput, resilience, and observability. Implementing this infrastructure is complex, and it’s usually not a core concern for dApps.
+
+## Solution
+
+We’ll build a generic backend component that serves as a smart, massive mempool. It can be used by dApps directly out-of-the-box as a resilient and performant mechanism for transaction submission.
+
+The Boros infrastructure will include the following features:
+
+- **Resilience**: Persistent queues using backend technologies such as Kafka, Redis, and Postgres. Transaction monitoring with automated procedures for confirmation and rollbacks, updating status in real-time.
+- **Throughput**: Peer fanout mechanism to propagate transactions efficiently, with a configurable and dynamic topology.
+- **Smart Submission**: TX-chaining for throughput improvement, priority queues for transaction prioritization, and server-side signatures for dApps requiring it.
+- **Developer Experience**: Lightweight process with no dependency on a full Cardano node, friendly API supporting HTTP, WebSockets, and gRPC for transaction queuing, and notification webhooks for event subscription.
+- **Observability**: Prometheus metrics and Grafana dashboards for throughput and performance monitoring, along with a management API for queue configuration and transaction monitoring.
+
+## Total Funds Requested
+
+**198,750 ADA**
+
+## Status
+
+*0/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](https://github.com/txpipe/boros)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/12/f12-cardano-open-developers/boros-tx-submission-for-intense-workloads-by-txpipe)**

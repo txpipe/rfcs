@@ -12,7 +12,7 @@ export default {
             titleTemplate: "%s – TxPipe RFCs",
             description: "TxPipe's  & RFCs",
             canonical: "https://rfcs.txpipe.io",
-            siteName: "TxPipe Grants & RFCs",
+            siteName: "TxPipe Grants ocument& RFCs",
             openGraph: {
                 url: "https://rfcs.txpipe.io",
                 title: "TxPipe Grants & RFCs",
