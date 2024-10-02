@@ -1,0 +1,54 @@
+## Title
+
+**Marlowe - Decentralized Oracle Integration**
+
+## Problem
+
+Marlowe is a brand new framework for building and running financial contracts. 
+Decentralized oracles are a mandatory component in many scenarios. Marlowe lacks integration with decentralized oracles.
+
+## Solution
+
+### Context
+
+- **Marlowe** is a brand new language and runtime for developing financial smart contracts.
+- **Marlowe contracts** are built by combining a small number of building blocks that describe making a payment, waiting for a certain condition, and other similar types of concepts.
+- **Oracles** are a whole category of tools that share the goal of injecting information onto the blockchain so that it can be used as part of on-chain validations (aka: contracts).
+- **Decentralized oracles** are a subset of the above that incorporates the desired feature of ensuring a higher level of assurance of the information by combining independent sources from independent parties.
+- **Charli3** is the more notable decentralized Oracle protocol in the Cardano ecosystem. There's also **Orcfax** which is still in development, as far as we know.
+- **Marlowe** currently has a mechanism to inject information feeds from external sources into contract actions, but it requires a high degree of trust from the participants of the contract.
+
+### Technical Plan
+
+Build a new off-chain component on top of the current Marlowe backend (the Marlowe Runtime) that integrates Marlowe contracts with feeds from **[Charli3](https://charli3.io)**.
+
+We'll also integrate with **COOP** compatible feeds (e.g., **[Orcfax](https://orcfax.io)**) if there's any active Oracle in the network by the time we reach development.
+
+This new component will be in charge of executing the following business logic:
+
+- Watch the blockchain in search of Marlowe contracts; introspect the internal logic and select only the instances that show a requirement for one of these oracles.
+- Watch the blockchain in search of compatible Oracle feeds and keep track of the corresponding reference inputs.
+- Upon finding a match between contract and feed, construct a particular transaction that will map the source data from the Oracle into a Marlowe action that can resolve a condition within the logic of the contract.
+
+Build a new on-chain validator that will participate in the transaction that activates the condition of the Marlowe contract. To avoid any kind of trust requirements on the off-chain component, this on-chain validator will execute the following checks:
+
+- Ensure the presence of the reference input from the corresponding oracle and any corresponding authentication token.
+- Ensure the presence of an output to the Marlowe contract with the required redeemer (aka IChoice action).
+- Ensure that the data from the oracle’s reference input matches the data in the outgoing Marlowe redeemer.
+- Ensure that the corresponding Marlowe “role” token is present in the inputs and passed back to itself.
+
+Lastly, combine both off-chain and on-chain components into a package for easy provisioning and execution by third-party teams.
+
+## Total Funds Requested
+
+**ADA 235,714**
+
+## Status
+
+*Completed*
+
+**[Github](https://github.com/marlowe-contrib/marlowe-oracle-service)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/10/f10-developer-ecosystem-the-evolution/marlowe-decentralized-oracle-integration)**
+
+

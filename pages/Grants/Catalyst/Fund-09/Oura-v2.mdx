@@ -1,0 +1,35 @@
+## Title
+
+**Oura V2**
+
+## Problem
+
+The adoption of the open-source project **Oura** has increased, and new features/issues are being requested. Extra development bandwidth is required to add new features and keep up with code maintenance.
+
+## Solution
+
+**Oura v1** has seen a significant level of adoption, as indicated by the activity on the GitHub repository. High-profile projects use Oura either as a base library or to fulfill specific data integration roles within their infrastructure.
+
+Project maintainers have completed most of the initial development roadmap and kept the codebase updated with required bug-fixes and upstream changes.
+
+However, with the help of the community, several improvements have been identified that require significant dedication:
+
+- **Chain-sync performance improvements**: Incorporating a new concurrency model at the multiplexer level, resulting in an expected 5x speed improvement in node-to-client connections.
+- **Event data model overhaul**: Fewer event types and more nested structures, allowing consumers to process full transaction payloads.
+- **Custom filter/sink integration via WebAssembly**: Allows users to run custom code by providing WebAssembly files, enabling integration with downstream services without a broker.
+- **New sinks for Azure services**: Direct integration with stream-processing services from Azure.
+- **Google Cloud Platform integration**: Finalizing new sinks that integrate with stream-processing services like PubSub and Cloud Functions.
+- **Kafka data source**: Allowing Oura to consume events from Kafka topics, enabling multiple Oura instances to process data without direct Cardano node connections.
+- **AWS S3 data source**: Enabling Oura to read from pre-populated S3 buckets of raw block data, useful for workloads that traverse historical data without affecting Cardano node performance.
+
+## Total Funds Requested
+
+**USD 44,640**
+
+## Status
+
+*Completed*
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/9/f9-developer-ecosystem/oura-v2)**
+
+**[GitHub](https://github.com/txpipe/oura)**

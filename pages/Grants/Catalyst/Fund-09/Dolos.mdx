@@ -1,0 +1,61 @@
+## Title
+
+**Dolos: Cardano "Data Node"**
+
+## Problem
+
+Nodes used exclusively as data sources for client tools have different requirements than block producers or relay nodes. Many performance and cost optimizations are not currently possible.
+
+## Solution
+
+Cardano nodes can assume one of two roles:
+
+- **Block Producer**: Responsible for minting blocks.
+- **Relay Node**: Responsible for relaying blocks between peers.
+
+Each of these roles has distinct responsibilities and runtime requirements, such as network topology, resource allocation, and backup procedures.
+
+We propose a third role, optimized for resolving local state queries or serving as a data source for downstream tools requiring ledger data.
+
+Key optimizations for data nodes include:
+
+- Reducing memory usage.
+- Using different storage options (e.g., S3, NFS).
+- Introducing alternative data-friendly protocols (e.g., REST, gRPC).
+- Adding an authentication layer for API endpoints.
+
+The project aims to create a focused version of the Cardano node tailored for data node deployment alongside producer and relay nodes. This new node type will be optimized for the following scenarios:
+
+- Serving as a data source for tools such as DB-sync, Ogmios, CARP, and Oura.
+- Acting as a low-resource node for syncing producer/relay nodes.
+- Scaling dynamically based on query load.
+- Using network/cloud storage instead of mounted drives.
+- Enabling horizontal scaling for high-availability topologies.
+- Acting as a local low-resource node for state query resolution.
+
+The data node will share some features with the mainstream Cardano node:
+
+- **Node-to-Node and Node-to-Client Chain-Sync mini-protocol**.
+- **Node-to-Node Block-Fetch mini-protocol**.
+- **Node-to-Client Local-State-Query mini-protocol**.
+
+Additionally, the data node will introduce the following new features:
+
+- **HTTP/JSON endpoint** for common local state queries.
+- **gRPC endpoint** for local state queries and chain-sync procedures.
+- **Support for alternative storage options**, such as NFS, S3, and GCP Buckets.
+- **Low memory consumption**, enabled by trade-offs in scope.
+
+**Dolos** will be developed as an open-source project using Rust, heavily leveraging the Pallas library developed by the team (currently at version 0.11).
+
+## Total Funds Requested
+
+**USD 75,680**
+
+## Status
+
+*Completed*
+
+**[Github](https://github.com/txpipe/dolos)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/9/f9-developer-ecosystem/dolos-cardano-data-node)**

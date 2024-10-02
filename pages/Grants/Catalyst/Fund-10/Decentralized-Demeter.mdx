@@ -1,0 +1,62 @@
+## Title
+
+**Decentralized Demeter.run - Federated Frontend Hosting - New revenue stream for SPOs**
+
+## Problem
+
+Even permissionless dApps are subject to censorship if the frontend (UI) is hosted on a centralized hosting provider. Running global, performant, decentralized frontends is hard and expensive.
+
+## Solution
+
+The **Demeter Project Proposal** aims to solve the problem of frontend hosting with the following approach:
+
+### What’s a Frontend?
+
+- A frontend is a web app or mobile app providing a user-friendly interface. End-users interact with dApps through this frontend.
+- Without a frontend, interacting with the blockchain would require manual creation of complex transactions and a deep understanding of on-chain data.
+- Frontends are critical for any dApp, requiring reliability, performance, scalability, and ease of development and maintenance.
+- Currently, most frontends rely on large cloud service providers such as AWS, Azure, or Google Cloud, primarily due to their reliability and performance.
+
+### Problems with Current Approach
+
+- **Not censorship-resistant**: If the cloud provider shuts down or is coerced to do so, the dApp becomes inaccessible.
+- **Limited capabilities of alternatives**: Solutions like IPFS provide censorship resistance but lack server-side processing, load-balancing, in-place updates, and monitoring.
+- **Poor competition**: Developers are locked into a short list of providers, with little incentive for standardization, leading to vendor lock-in.
+- **Cardano-specific complexity**: Generic cloud providers don’t provide Cardano-specific tools (e.g., Cardano Node, DBSync, Kupo) by default, adding complexity and increasing total cost of ownership.
+
+### Solution
+
+- An open-source hosting platform (**Demeter.net**) that offers a developer experience similar to Vercel or Netlify.
+- A network of independent stake pool operators (SPOs) providing hosting infrastructure globally.
+- A **fair load-balancing mechanism** that distributes web requests based on a reputation score of SPO performance.
+- A **bookkeeping system** built on a distributed ledger for managing charges and compensating participants via a smart contract.
+- SPOs would also provide **Cardano-specific services** (e.g., access to Cardano Node, DBSync), generating additional revenue.
+
+### Scope for this Proposal
+
+The proposal seeks to build a **Proof of Concept (PoC)** with the following features:
+
+- At least 2 SPOs as infrastructure providers alongside TxPipe.
+- Support for 10 to 200 real-world frontends hosted on the platform.
+- A minimum viable version of the **bookkeeping mechanism** for trusted entities.
+- A minimum viable version of the **load-balancing mechanism** with all required features.
+- Personalized training for SPOs to operate the system.
+- A marketing campaign to encourage dApp developers to adopt the platform.
+
+![Federated Demeter Topology](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-16.57.18-62a4cd/png)
+
+![dApp Deployment](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-17.00.33-184166/png)
+
+![DNS Resolve](https://cardano.ideascale.com/a/attachments/embedded-files/Screenshot-2023-07-16-at-17.02.57-c53098/png)
+
+## Total Funds Requested
+
+**ADA 407,857**
+
+## Status
+
+*Completed*
+
+**[Github](https://github.com/demeter-run)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/10/f10-spo-tools-and-community-projects/decentralized-demeterrun-federated-frontend-hosting-new-revenue-stream-for-spos)**

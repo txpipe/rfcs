@@ -1,0 +1,90 @@
+## Title
+
+**Mumak by TxPipe: A PostgreSQL custom extension to process raw Cardano CBOR**
+
+## Problem
+
+Cardano data is usually serialized as CBOR. Storing Cardano in databases requires a mapping between CBOR and the relational model. This mapping is complex, expensive and usually suboptimal.
+
+## Solution
+
+### Executive Summary
+
+- We'll build a custom PostgreSQL extension that allows you to interact with Cardano CBOR data directly.
+- Developers will be able to store raw CBOR as table columns and use our extensions to evaluate predicates and projections directly.
+- This simplifies many data indexing scenarios and provides improved performance over alternative queries requiring complex table joins.
+- We'll also provide a generic dataset, a simple PostgreSQL schema + data that represents much of the data found on-chain leveraging the Mumak extension.
+- We'll integrate Mumak with Mithril and Oura, providing a way for fast processing of the whole history of the chain.
+- We'll integrate Mumak into TxPipe's Scrolls indexer providing a way to create richer datasets in a simpler way.
+- We'll integrate the Mumak service on the Demeter platform so that it can be accessed directly without the need of provisioning your own instance.
+
+### Introduction
+
+The de facto wire format used to exchange Cardano data is **CBOR**. By Cardano data, we refer to Blocks, Transactions, UTxOs, Certificates, and all of their inner structures.
+
+When indexing this data onto a relational database, such as PostgreSQL, we usually deserialize the CBOR structures and map the values to different columns & tables in our schema.
+
+Sometimes having a normalized data model is exactly what your use-case needs, but there are multiple scenarios where this mapping just adds complexity and performance penalties.
+
+**Mumak** is a PostgreSQL extension that provides several custom functions to interact with Cardano CBOR data directly on the database.
+
+For example, this means that you could store a whole Cardano transaction as CBOR in a bytes PostgreSQL column and then use SQL to ask things such as:
+
+- Does this transaction involve address X?
+- What's the total ADA output of this transaction?
+- Is this transaction minting a token for policy X?
+
+The evaluation of these values will happen in-process, as part of the database query execution.
+
+### Usage Example
+
+Let's say that we have a table where we store transactions in CBOR format. By doing this, we could connect to the PostgreSQL instance and run queries like these:
+
+```sql
+SELECT
+  tx_hash(tx_cbor, era),
+  tx_lovelace_output(tx_cbor, era)
+FROM txs
+WHERE
+  tx_has_address(tx_cbor, era, 'addr1xxx');
+SELECT
+  tx_asset_mint(tx_cbor, era, '0x000000', 'myasset')
+FROM txs
+WHERE
+  tx_has_asset(tx_cbor, era, '0x000000', 'myasset');
+SELECT
+  tx_metadata_label(tx_cbor, era, 721)
+FROM txs
+WHERE
+  tx_has_metadata_label(tx_cbor, era, 721);
+```
+
+Let’s say that we now have a table where we store Cardano addresses as raw bytes. We could run the following queries:
+
+```sql
+SELECT
+  delegation_part(address)
+WHERE
+  is_script_address(address);
+sql
+Copy code
+SELECT
+  payment_part(address)
+WHERE
+  delegation_part(address) = '0x000';
+```
+### More Information
+
+If you’re interested in learning more about the project, even outside the scope of the Catalyst proposal, please bookmark our [git repository](https://github.com/txpipe/mumak). We'll make sure to maintain the README updated with relevant information and news.
+
+## Total Funds Requested
+
+**ADA 170,714**
+
+## Status
+
+*4/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](https://github.com/txpipe/mumak)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/11/cardano-open-developers/mumak-by-txpipe-a-postgresql-custom-extension-to-process-raw-cardano-cbor)**

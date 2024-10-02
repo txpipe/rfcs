@@ -1,0 +1,29 @@
+## Title
+
+**Amaru: P2P Networking Component by TxPipe**
+
+## Problem
+
+Amaru is a full Cardano node built in Rust, but it is missing a critical component: the P2P networking stack. Building a robust P2P component requires substantial development effort.
+
+## Solution
+
+We'll contribute a new Rust library that implements a peer-to-peer (P2P) networking layer compatible with Cardano. This P2P networking component will allow Amaru and any other Rust-based application to efficiently and securely participate in the Cardano network.
+
+The solution will focus on three main areas:
+
+- **Peer Discovery**: A mechanism for discovering peers dynamically by inspecting the ledger state and using SPO registration certificates. Additional peer-sharing capabilities will also be included.
+- **Outbound Routing**: Managing outbound traffic using various heuristics such as health checks, latency scoring, and random churn to ensure optimal network performance.
+- **Inbound Monitor**: Monitoring inbound connections to optimize efficiency and mitigate potential attacks through rate-limiting, throttling, and connection limits.
+
+## Total Funds Requested
+
+**148,125 ADA**
+
+## Status
+
+*0/5 Milestones completed - Expected completion for August 2024*
+
+**[Github](https://github.com/pragma-org/amaru)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/12/f12-cardano-open-developers/amaru-p2p-networking-component-by-txpipe)**

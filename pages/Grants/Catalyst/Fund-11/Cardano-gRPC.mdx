@@ -1,0 +1,32 @@
+## Title
+
+**gRPC ❤️ Cardano: A streaming API for Cardano using Dolos**
+
+## Problem
+
+Interacting with the Cardano node is extremely difficult. It uses a custom binary protocol with incomplete specs and only supports Haskell out-of-the-box. The only way to connect is via Unix sockets, making it less accessible for developers.
+
+## Solution
+
+We'll build a streaming, real-time API for Cardano, providing a more natural mechanism for interacting with the blockchain. 
+
+- The API will use **gRPC**, a performant and robust protocol extensively used across the industry.
+- It will be powered by **Dolos**, another project by TxPipe, and serve as an efficient replacement of the Cardano node for data integration scenarios.
+- The API will be integrated into the **Demeter platform** to provide a zero-configuration experience for developers. A **free-tier** will be available.
+
+### Key Features:
+- **gRPC over Ouroboros mini-protocols**: gRPC provides a well-documented, efficient, and binary-encoded protocol that simplifies developer interactions and boosts performance.
+- **Streaming Support**: gRPC supports client-side, server-side, or bidirectional streaming, allowing developers to react to real-time changes in the blockchain without continuous polling.
+- **UTxO RPC Spec**: A new spec built on top of gRPC, enabling efficient, implementation-agnostic interactions for Cardano UTxO-based chains, promoting interoperability.
+
+## Total Funds Requested
+
+**₳177,082**
+
+## Status
+
+*4/5 Milestones completed - In progress*
+
+**[GitHub](https://github.com/txpipe)**
+
+**[Project Website on Catalyst](https://projectcatalyst.io/funds/11/cardano-open-developers/grpc-cardano-a-streaming-api-for-cardano-using-dolos-by-txpipe)**
